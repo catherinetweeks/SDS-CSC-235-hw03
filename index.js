@@ -298,3 +298,67 @@ let myData = [
       "total_millions": "52"
     }
   ]
+
+// Sources used: 1. https://www.youtube.com/watch?v=sTOHoueLVJE, 2. https://observablehq.com/@d3/d3-group, 3. https://www.d3indepth.com/selections/
+// Set up dimesions of chart
+
+const margin = { top: 70, right: 40, bottom: 60, left: 100}
+const width = 800 - margin.left - margin.right
+const height = 600 - margin.top - margin.bottom
+
+// Create svg container for the chart
+
+const svg = d3.select("#bar-chart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  
+// Process data
+
+  // Group languages by family and get the count of languages in each family
+let lang_fam_count = d3.rollup(myData, v => v.length, d => d.family);
+  // convert map to array
+myData = Array.from(lang_fam_count, ([family, lang_fam_count]) => ({family, lang_fam_count}));
+
+myData.forEach(d => { d.lang_fam_count = +d.lang_fam_count; });
+
+
+// Sort Data
+myData.sort((a, b) => b.lang_fam_count - a.lang_fam_count);
+// X and Y Scales
+
+const x = d3.scaleLinear()
+    .range([0, width])
+    .domain([0, d3.max(myData, function(d) {return d.lang_fam_count;})]);
+    // Returns max of data
+
+const y = d3.scaleBand()
+    .range([0, height])
+    .padding(0.1)
+    .domain(myData.map(function(d) { return d.family; }))
+
+// Create axes 
+const xAxis = d3.axisBottom(x);
+const yAxis = d3.axisLeft(y);
+
+// Add axes to bar chart
+svg.append("g")
+    .attr("class", "x-axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
+
+  svg.append("g")
+    .call(yAxis);
+
+// Add bars 
+svg.selectAll(".bar")
+    .data(myData)
+    .enter().append("rect")
+    .attr("class", "bar")
+    .attr("y", function (d) { return y(d.family); })
+    .attr("height", y.bandwidth())
+    .attr("x", 0)
+    .attr("width", function (d) { return x(d.lang_fam_count);})
+    .style("fill", "lightblue")
+
