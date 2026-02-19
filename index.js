@@ -356,9 +356,18 @@ svg.selectAll(".bar")
     .data(myData)
     .enter().append("rect")
     .attr("class", "bar")
-    .attr("y", function (d) { return y(d.family); })
+    .attr("y", d => y(d.family))
     .attr("height", y.bandwidth())
     .attr("x", 0)
-    .attr("width", function (d) { return x(d.lang_fam_count);})
-    .style("fill", "lightblue")
+    .attr("width", d => x(d.lang_fam_count))
+    .attr("fill", "lightblue")
+    .attr("cursor", "pointer")
+
+svg.selectAll(".bar")
+    .on("click", function() {
+        const current = d3.select(this).attr("fill");
+        d3.select(this)
+            .attr("fill", current === "darkblue" ? "lightblue" : "darkblue");
+    });
+
 
