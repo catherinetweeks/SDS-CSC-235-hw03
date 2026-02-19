@@ -308,7 +308,7 @@ const height = 600 - margin.top - margin.bottom
 
 // Create svg container for the chart
 
-const svg = d3.select("#bar-chart").append("svg")
+const bar = d3.select("#bar-chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -344,7 +344,7 @@ const yAxis = d3.axisLeft(y);
 
 
 // Add bars 
-svg.selectAll(".bar")
+bar.selectAll(".bar")
     .data(myData)
     .enter().append("rect")
     .attr("class", "bar")
@@ -355,7 +355,7 @@ svg.selectAll(".bar")
     .attr("fill", "lightblue")
     .attr("cursor", "pointer")
 
-svg.selectAll(".bar")
+bar.selectAll(".bar")
     .on("click", function() {
         const current = d3.select(this).attr("fill");
         d3.select(this)
@@ -364,12 +364,12 @@ svg.selectAll(".bar")
 
 
 // Add axes to bar chart
-svg.append("g")
+bar.append("g")
     .attr("class", "x-axis")
     .attr("transform", "translate(0," + height + ")")
     .call(xAxis);
 
-  svg.append("g")
+  bar.append("g")
     .call(yAxis);
 
 
