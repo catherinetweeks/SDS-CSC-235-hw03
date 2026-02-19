@@ -299,7 +299,7 @@ let myData = [
     }
   ]
 
-// Sources used: 1. https://www.youtube.com/watch?v=sTOHoueLVJE, 2. https://observablehq.com/@d3/d3-group, 3. https://www.d3indepth.com/selections/
+// Sources used: 1. https://www.youtube.com/watch?v=sTOHoueLVJE, 2. https://observablehq.com/@d3/d3-group, 3. https://www.d3indepth.com/selections/, 4. https://www.youtube.com/watch?v=fw1tQOv2U14 
 // Set up dimesions of chart
 
 const margin = { top: 70, right: 40, bottom: 60, left: 100}
@@ -342,6 +342,18 @@ const y = d3.scaleBand()
 const xAxis = d3.axisBottom(x);
 const yAxis = d3.axisLeft(y);
 
+// Add grid lines
+bar.selectAll("line.vertical-grid")
+    .data(x.ticks(5))
+    .enter()
+    .append("line")
+    .attr("class", "vertical-grid")
+    .attr("x1", function (d) { return x(d); })
+    .attr("y1", 0)
+    .attr("x2", function (d) { return x(d); })
+    .attr("y2", height)
+    .style("stroke", "lightgray")
+    .style("stroke-width", 0.5)
 
 // Add bars 
 bar.selectAll(".bar")
@@ -362,8 +374,7 @@ bar.selectAll(".bar")
             .attr("fill", current === "darkblue" ? "lightblue" : "darkblue");
     });
 
-
-// Add axes to bar chart
+// Add axes
 bar.append("g")
     .attr("class", "x-axis")
     .attr("transform", "translate(0," + height + ")")
@@ -372,4 +383,41 @@ bar.append("g")
   bar.append("g")
     .call(yAxis);
 
+// Add titles
+bar.append("text")
+    .attr("transform", "translate(" + width / 2 + "," + (height + margin.bottom /2) + ")")
+    .style("text-anchor", "middle")
+    .style("font-family", "sans-serif")
+    .attr("dy", "1em")
+    .text("Number of Languages");
+
+bar.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("x", -height / 2)
+    .attr("y", -margin.left + 15)
+    .style("text-anchor", "middle")
+    .style("font-family", "sans-serif")
+    .text("Language Family");
+
+// main title
+  bar.append("text")
+    .attr("x", width/2 - margin.left*2)
+    .attr("y", margin.top - 100)
+    .style("font-size", "18px")
+    .style("font-weight", "bold")
+    .style("font-family", "sans-serif")
+    .text("Number of Languages in each Language Family");
+
+
+
+
+
+// Pie chart
+
+// svg container
+const pie = d3.select("#pie-chart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 

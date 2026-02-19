@@ -10,17 +10,17 @@ Listed below are various aspects of the assignment. When you turn in your work, 
 
 ### Phase 1:
 
-__ 1 pt: Sound data-visual mapping 
+**YES** 1 pt: Sound data-visual mapping 
 
-__ 1 pt: Aesthetically pleasing 
+**YES** 1 pt: Aesthetically pleasing 
 
-__ 1 pt: Title
+**YES** 1 pt: Title
 
-__ 3 pts: Proper x-axis
+**YES** 3 pts: Proper x-axis
 
-__ 3 pts: Proper y-axis
+**YES** 3 pts: Proper y-axis
 
-__ 3 pts: Functional highlighting 
+**YES** 3 pts: Functional highlighting 
 
 
 ### Phase 2:
@@ -39,14 +39,14 @@ __ 3 pts: Functional response to click
 
 ### General:
 
-__ 1 pt: CSS is in an external file, not coded directly in the `.html` file
+**YES** 1 pt: CSS is in an external file, not coded directly in the `.html` file
 
-__ 1 pt: JS is in an external file, not coded directly in the `.html` file
+**YES** 1 pt: JS is in an external file, not coded directly in the `.html` file
 
-__ 1 pt: Completed `rubric.md` included with submission
+**YES** 1 pt: Completed `rubric.md` included with submission
 
-__ 1 pt: Browser compiles code with no errors 
+**YES** 1 pt: Browser compiles code with no errors 
 
-__ 1 pt: Interactive components execute fully and consistently with no errors
+**YES** 1 pt: Interactive components execute fully and consistently with no errors
 
 __ Changelog: Completed `changelog.md` included with submission
