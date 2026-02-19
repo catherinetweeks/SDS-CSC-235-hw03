@@ -342,14 +342,6 @@ const y = d3.scaleBand()
 const xAxis = d3.axisBottom(x);
 const yAxis = d3.axisLeft(y);
 
-// Add axes to bar chart
-svg.append("g")
-    .attr("class", "x-axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis);
-
-  svg.append("g")
-    .call(yAxis);
 
 // Add bars 
 svg.selectAll(".bar")
@@ -369,5 +361,15 @@ svg.selectAll(".bar")
         d3.select(this)
             .attr("fill", current === "darkblue" ? "lightblue" : "darkblue");
     });
+
+
+// Add axes to bar chart
+svg.append("g")
+    .attr("class", "x-axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
+
+  svg.append("g")
+    .call(yAxis);
 
 
