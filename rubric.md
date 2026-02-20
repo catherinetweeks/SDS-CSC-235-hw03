@@ -25,17 +25,17 @@ Listed below are various aspects of the assignment. When you turn in your work, 
 
 ### Phase 2:
 
-__ 1 pt: Sound data-visual mapping 
+**YES** 1 pt: Sound data-visual mapping 
 
-__ 1 pt: Aesthetically pleasing 
+**YES** 1 pt: Aesthetically pleasing 
 
-__ 1 pt: Title
+**YES** 1 pt: Title
 
-__ 1 pt: Proper labeling
+**YES** 1 pt: Proper labeling
 
-__ 1 pt: Correct proportions 
+**YES** 1 pt: Correct proportions 
 
-__ 3 pts: Functional response to click  
+**YES** 3 pts: Functional response to click  
 
 ### General:
 
